@@ -13,13 +13,22 @@ Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
 
 */
 
-var runningSum = function(nums) { 
+var runningSum2 = function(nums) {
+    //add the each number with the previous exept the first number from the array
     for(let i = 1; i < nums.length; i++) {
-
-    nums[i] += nums[i-1]
-
+        nums[i] += nums[i-1]
     }
     return nums
 }
 
+// var runningSum = function(nums) { 
+//     for(let i = 1; i < nums.length; i++) {
+
+//     nums[i] += nums[i-1]
+
+//     }
+//     return nums
+// }
+
 let nums = [1,2,3,4,5]
+console.log(runningSum2(nums))

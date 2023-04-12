@@ -32,6 +32,26 @@ var pivotIndex = function(nums) {
     return -1;
 }
 
-let nums = []
+var pivotIndex2 = function(nums) {
+
+    //create totalSum from array values
+    //subtract each array value from the total sum and add to the leftSum
+    //compare leftSum with what remains from totalSum
+
+    let totalSum = nums.reduce((current, sum) => {return current + sum},0);
+    let leftSum = 0;
+    for(let i = 0; i < nums.length; i++) {
+        if(totalSum - nums[i] === leftSum) {
+            return i
+        } else {
+            totalSum -= nums[i]
+            leftSum += nums[i]
+        }
 
 
+    }
+    return  -1;
+}
+
+let nums = [1,7,3,6,5,6]
+console.log(pivotIndex2(nums))

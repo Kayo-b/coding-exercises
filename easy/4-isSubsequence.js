@@ -53,3 +53,44 @@ var isSubsequence = function(s, t) {
 
 console.log(isSubsequence("abc","abcq"))
 
+var isSubsequence3 = function(s,t) {
+    //verify if every character from s is contained in t
+    //if true, verify if the order of the characters is the same
+    //create two new variables set to 0, these will be the counters for each letter
+    //create a while loop that will run while the new variables are < than the length of both words
+    //the loop will compare each letter from s to t and see if it is the same, if it is, it add +1 to
+    // both counters and continue to the next letter comparison
+    //if it isn't the same, the +1 will be added only on the 
+    let i = 0;
+    let k = 0;
+    while(i < s.length && k < t.length) {
+        if(s[i] === t[i]) {
+            i++
+        }
+        k++
+
+    }
+    return i === s.length
+}
+
+
+var isSubsequence4 = function(s,t) {
+    /*
+    compare all indexes of s with all of the indexes of t, from left to right
+    if index doesnt match t, compare to next index, if it matches, check next index
+    until all have been verified
+    */
+    let i = 0;
+    let j = 0;
+    while(i < s.length && j < t.length) {
+        if(s[i] === t[j]) {
+            i++
+            
+        } 
+        j++
+      
+    }
+
+    return i === s.length
+}
+console.log(isSubsequence4("abc","azcq"))
