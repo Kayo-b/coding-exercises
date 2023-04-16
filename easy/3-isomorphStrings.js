@@ -80,5 +80,44 @@ var isIsomorphic2 = function(s, t) {
 console.log(isIsomorphic2("as", "de"))
 
 var isIsomorphic3 = function(s, t) {
-    
+    if(s.length !== t.length) {
+        return false;
+    }
+    let k = {};
+    let j = {};
+    for(let i = 0; i < s.length;i++) {
+        if(!k[s[i]] && !j[t[i]]) {
+            k[s[i]] = t[i];
+            j[t[i]] = s[i];
+        } else if(k[s[i]] !== t[i] || t2s[t[i]] !== s[i] ) {
+            return false
+        }
+    }
+    return true
 }
+
+console.log(isIsomorphic3("paper", "title"))
+
+var isIso = (s,t) => {
+    if(s.length !== t.length) {
+        return false;
+    }
+    let s2t = {};
+    let t2s = {};
+    for(let i = 0; i < s.length; i++) {
+        //create an object for each string, where each letter will be maped to the opposing letter
+        //if the key letter isnt in the obj yet, add it and assign its value. do that for both objects
+        //if value was already assigned, that means that it is a repeated letter, so we'll check if this
+        //repeated letter has a different value than the one previously attributed in the object.
+        if(!s2t[s[i]] && !t2s[t[i]]) {
+            s2t[s[i]] = t[i];
+            t2s[t[i]] = s[i]
+        } else if(s2t[s[i]] !== t[i] || t2s[t[i]] !== s[i]) {
+            return false
+        }
+    }
+    return true
+ 
+}
+
+console.log(isIso("as", "de"))

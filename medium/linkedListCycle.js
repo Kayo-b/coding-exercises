@@ -63,8 +63,28 @@ var detectCycle = function(head) {
     return slow;
 };
 
+
+//find if there is actually a loop in the list using slow and fast iterations
+//find where the loop starts by reseting the slow back to the head and continuing to iterate one node at a time
+//for both fast and slow, they will meet at the start of the loop, because the length from the first meeting point to the start of
+//the loop will always have the same length than the start of the list to the start of the loop.
 var detectCycle = function(head) {
-    
+    let fast = head;
+    let slow = head;
+    while(fast && fast.next) {
+        fast = fast.next.next;
+        slow = slow.next;
+        if(fast === slow) {
+            break;
+        }
+    }
+    if(fast !== slow) return null;
+    slow = head;
+    while(fast !== slow) {
+        fast = fast.next
+        slow = slow.next
+    }
+    return slow
 };
 
 let list1 = { val: 1, next: { val: 2, next: { val: 4, next: null } } }

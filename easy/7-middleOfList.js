@@ -87,3 +87,32 @@ var middleNode3 = function(head) {
 let list1 = { val: 1, next: { val: 2, next: { val: 4, next: {val:6, next: {val: 9, next: null}} } } }
 console.log(middleNode3(list1))
 
+var maxProfit = function(prices) {
+    //check if values always decrease, if yes return 0
+    //if not find lowest and highest value
+    // if index of lowest is before index of highest, sell
+
+    //take every number from left to right, subtract it for all remaining numbers on the right 
+    //and store highest resulting value
+    
+    let high = 0;
+    for(let i = 0; i < prices.length; i++) {
+       let current = prices[i]
+       
+       for(let j = 1; j < prices.length; j++) {
+
+            if(high < prices[j] - current ) {
+                if(i < j) {
+
+                high = prices[j] - current;
+                }  
+            }
+            
+       }
+
+    }
+    return high
+    
+};
+
+console.log(maxProfit([7,6,4,3,1]))

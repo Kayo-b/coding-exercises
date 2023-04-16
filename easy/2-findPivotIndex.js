@@ -53,5 +53,39 @@ var pivotIndex2 = function(nums) {
     return  -1;
 }
 
+var pivotIndex3 = function(nums) {
+    let totalSum = nums.reduce((current, next) => {
+        return current + next
+    },0);
+    let leftSum = 0;
+    for(let i = 0; i < nums.length; i++) {
+        if(totalSum - nums[i] === leftSum) {
+            return i
+        } else {
+            totalSum -= nums[i];
+            leftSum += nums[i]
+        }
+    }
+    return -1;
+}
+
+var pivotIndex4 = function(nums) {
+    let totalSum = nums.reduce((current, sum) => {
+        return current + sum
+    })
+    let leftSum = 0;
+    for(let i = 0; i < nums.length; i++) {
+    
+        if(leftSum === totalSum - nums[i]) {
+            return i;
+        } else {
+            
+            leftSum += nums[i];
+            totalSum -= nums[i];
+        }
+        
+    }
+    return -1
+}
 let nums = [1,7,3,6,5,6]
-console.log(pivotIndex2(nums))
+console.log(pivotIndex4(nums))
