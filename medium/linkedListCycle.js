@@ -87,10 +87,28 @@ var detectCycle = function(head) {
     return slow
 };
 
-let list1 = { val: 1, next: { val: 2, next: { val: 4, next: null } } }
+var detectCycle = function(head) {
+    if(!head || !head.next) {
+        return false
+    }
+    let fast = head;
+    let slow = head;
+    while(fast && fast.next) {
+        fast = fast.next.next;
+        slow = slow.next;
+        if(fast === slow) break;
+    }
+    if(fast !== slow) return false;
+    slow = head;
+    while(slow !== fast) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+    return slow
+
+}
 
 
-console.log()
 
 
 

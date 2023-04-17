@@ -1,17 +1,17 @@
-
-var isSubSeq = (s,t) => {
-    let k = 0;
-    let j = 0;
-    //Compare each letter from s to each letter from t
-    while(k < s.length && j < t.length) {
-        console.log(k)
-        console.log(j)
-        if(s[k] === t[j]) {
-            k++
-        } 
-        j++
+var maxProfit2 = (prices) => {
+    let lowest = Number.MAX_VALUE
+    let highest = 0;
+    for(let i = 0; i < prices.length; i++) {
+        if(prices[i] < lowest) {
+            lowest = prices[i];
+        } else if(prices[i] > highest) {
+            highest = prices[i];
+        }
+        
     }
-    return k === s.length
+    if(highest - lowest > 0) {
+        return highest - lowest
+    }
+    return 0
 }
-
-console.log(isSubSeq("abc","azcq"))
+console.log(maxProfit2([7,1,5,3,6,4]))
