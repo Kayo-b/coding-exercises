@@ -106,6 +106,24 @@ var levelOrder3 = (root) => {
     }
     return result
 }
+
+var lvlOrder4 = (root) => {
+    let result = []
+    let queue = [root]
+    while(queue.length > 0) {
+        let level = [];
+        let size = queue.length
+        for(let i = 0; i < size; i++) {
+            let node = queue.shift();
+            level.push(node.val);
+            for(let child of node.children) {
+                queue.push(child);
+            }
+        }
+        result.push(level)
+    }
+    return result
+}
 // Create an n-ary tree
 let root = new Node(1, []);
 let child1 = new Node(3, []);
@@ -121,7 +139,7 @@ child1.children.push(grandChild2);
 
 // Test the function
 console.log(root)
-console.log(levelOrder3(root)); // [[1],[3,2,4],[5,6]]
+console.log(lvlOrder4(root)); // [[1],[3,2,4],[5,6]]
 //Wrong answer
 // var levelOrder = function(root) {
 //     //add the first value, transverse the array
