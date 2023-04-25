@@ -1,17 +1,19 @@
-var maxProfit2 = (prices) => {
-    let lowest = Number.MAX_VALUE
-    let highest = 0;
-    for(let i = 0; i < prices.length; i++) {
-        if(prices[i] < lowest) {
-            lowest = prices[i];
-        } else if(prices[i] > highest) {
-            highest = prices[i];
-        }
-        
-    }
-    if(highest - lowest > 0) {
-        return highest - lowest
-    }
-    return 0
-}
-console.log(maxProfit2([7,1,5,3,6,4]))
+
+function Node(val, children) {
+    this.val = val;
+    this.children = children;
+};
+
+// Create an n-ary tree
+let root = new Node(1, []);
+let child1 = new Node(3, []);
+let child2 = new Node(2, []);
+let child3 = new Node(4, []);
+root.children.push(child1);
+root.children.push(child2);
+root.children.push(child3);
+let grandChild1 = new Node(5, []);
+let grandChild2 = new Node(6, []);
+child1.children.push(grandChild1);
+child1.children.push(grandChild2);
+console.log(root)
