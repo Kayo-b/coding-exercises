@@ -1,19 +1,52 @@
+function ListNode5(val, next){
+    this.val = val === undefined ? 0 : val
+    this.next = next === undefined ? null : next
+}
+var mergeTwoLists5 = (list1, list2) => {
+    let dummy = new ListNode5();
+    let current = dummy;
 
-function Node(val, children) {
-    this.val = val;
-    this.children = children;
-};
+    //create a new header using current and  use it to set the next values depending on the size of each value
+    while(list1 && list2) {
+        if(list1.val < list2.val) {
+            current.next = list1;
+            list1 = list1.next;
+          
+        } else {
+            current.next = list2;
+            list2 = list2.next;
+        }
+        current = current.next;
+    }
+            if(list1) {
+            current.next = list1;
+        } else {
+            current.next = list2;
+        }
 
-// Create an n-ary tree
-let root = new Node(1, []);
-let child1 = new Node(3, []);
-let child2 = new Node(2, []);
-let child3 = new Node(4, []);
-root.children.push(child1);
-root.children.push(child2);
-root.children.push(child3);
-let grandChild1 = new Node(5, []);
-let grandChild2 = new Node(6, []);
-child1.children.push(grandChild1);
-child1.children.push(grandChild2);
-console.log(root)
+   return dummy.next.next.next.next.next
+
+}
+
+var mergeTwoLists6 = (list1, list2) => {
+    let dummy = new ListNode5()
+    let current = dummy;
+    while(list1 && list2) {
+        if(list1.val < list2.val) {
+            current.next = list1;
+            list1 = list1.next;
+        } else {
+            current.next = list2
+            list2 = list2.next;
+        }
+        current = current.next
+    }
+    if(list1) {
+        current.next = list1;
+    } else {
+        current.next = list2;
+    }
+    return dummy.next;
+
+}
+console.log(mergeTwoLists6(list1, list2))

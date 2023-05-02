@@ -48,4 +48,17 @@ var reverseList2 = function(head) {
 }
 let list1 = { val: 1, next: { val: 2, next: { val: 4, next: {val:6, next: {val: 9, next: null}} } } }
 
-console.log(reverseList2(list1))
+
+var reverseList3 = (head) => {
+    let prev = null;
+    let current = head;
+    while(current) {
+        let temp = current.next;
+        current.next = prev;
+        prev = current;
+        current = temp;
+    }
+    return prev
+}
+
+console.log(reverseList3(list1))

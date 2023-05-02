@@ -33,6 +33,20 @@ function Node(val, children) {
     this.children = children;
 };
 
+var preorder3 = (root) => {
+    let result = [];
+    let traverse = (node) => {
+        if(!node) return;
+        result.push(node.val);
+        for(let child of node.children) {
+            traverse(child)
+        }
+        
+    }
+    traverse(root)
+    return result
+}
+
 // Create an n-ary tree
 let root = new Node(1, []);
 let child1 = new Node(3, []);
@@ -46,4 +60,4 @@ let grandChild2 = new Node(6, []);
 child1.children.push(grandChild1);
 child1.children.push(grandChild2);
 
-console.log(preorder(root))
+console.log(preorder3(root))

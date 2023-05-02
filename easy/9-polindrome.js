@@ -72,3 +72,36 @@ var longestPalindrome2 = (s) => {
     
 }
     console.log(longestPalindrome2("abbbbddcc"))
+
+var longestPalindrome3 = (s) => {
+    let obj = {};
+    //map every letter and its frequency in the object
+    //create count value for the length of the palindrome
+    //add all even numbers to the count.
+    //add all odd numbers -1 to the count.
+    //if there were odd numbers present, add + 1 to the count after all the values have been added(this +1 will be the odd number at the center of the word)
+    //return count
+    let count = 0 ;
+    for(let i = 0; i < s.length;i++) {
+        if(!obj[s[i]]) {
+            obj[s[i]] = 1;
+        } else {
+            obj[s[i]] += 1;
+        }
+    }
+    let isOdd = false;
+    for(let key in obj) {
+        
+        if(obj[key] % 2 === 0) {
+            
+            count += obj[key];
+        } else {
+            count += obj[key] - 1;
+            isOdd = true;
+        }
+
+    }
+    if(isOdd) count++
+    return count;
+}
+console.log(longestPalindrome3("abbbbddcc"))

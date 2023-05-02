@@ -106,7 +106,10 @@ var levelOrder3 = (root) => {
     }
     return result
 }
-
+/*
+create the queue array, create the result array, add root into the queue array
+while the queue length > 0: s
+*/
 var lvlOrder4 = (root) => {
     let result = []
     let queue = [root]
@@ -126,29 +129,68 @@ var lvlOrder4 = (root) => {
 }
 
 var lvlOrder5 = (root) => {
-    //every node level will be traversed from left to right
-    //each node.val will be pushed into the level array
-    let current = root;
-    let queue = [];
+    let queue = [root];
     let result = [];
-    //take the root value, push the first root.val into result
-    //all other children nodes will be pushed into the queue(first in first out)
-    while(current) {
-        result.push(current.val)
-        if(current.children) {
-            for(let child of current.children) {
+    while(queue.length > 0) {
+        let level = [];
+        let size = queue.length;
+        for(let i = 0; i < size; i++) {
+            let node = queue.shift();
+            level.push(node.val);
+            for(let child of node.children) {
                 queue.push(child)
-                
-            }
+            } 
         }
-
-        current = queue.shift()
-        
-        
+        result.push(level)
     }
-    return result
+    return result;
+
 
 }
+
+var lvlOrder6 = (root) => {
+    let queue = [root];
+    let result = [];
+    while(queue.length > 0) {
+        let level = [];
+        let size = queue.length;
+        for(let i = 0; i < size;i++) {
+            let node = queue.shift();
+            level.push(node.val);
+            for(let child of node.children) {
+                queue.push(child)
+            }
+        }
+        result.push(level);
+    }
+    return result;
+
+}
+
+
+var lvlOrder7 = (root) => {
+    //use queue for first in and first out algo
+    //each level will be pushed inside its own array (so level array will be created inside the first loop)
+    //levels will be pushed inside the result array after the end of each loop
+    //node parameter will be created inside second loop so it passes the node.val into the level array
+    //inside the third loop is where the node child will be traversed and passed to the queue for next iteration
+    let queue = [root]
+    let result = []
+    while(queue.length > 0) {
+        let level = []
+        let size = queue.length
+        for(let i = 0; i < size; i++) {
+            let node = queue.shift()
+            level.push(node.val)
+            for(let child of node.children) {
+                queue.push(child)
+            }
+        }
+        result.push(level)
+    } 
+    return result
+}
+
 // Create an n-ary tree
 let root = new Node(1, []);
 let child1 = new Node(3, []);
@@ -161,6 +203,8 @@ let grandChild1 = new Node(5, []);
 let grandChild2 = new Node(6, []);
 child1.children.push(grandChild1);
 child1.children.push(grandChild2);
+
+
 
 // Test the function
 console.log(root)
@@ -210,3 +254,4 @@ console.log(lvlOrder5(root)); // [[1],[3,2,4],[5,6]]
 
 //console.log(levelOrder([1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]))
 // console.log(levelOrder([1,null,3,2,4,null,5,6]))
+
