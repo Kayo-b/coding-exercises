@@ -120,4 +120,25 @@ var isIso = (s,t) => {
  
 }
 
-console.log(isIso("as", "de"))
+
+var isIso2 = (s,t) => {
+    if(s.length !== t.length) return false;
+    //map each letter and their frequency in the string between both words
+    //if repeated letters in one word are different than the ones mapped, return false, else return true.
+    let s2t = {};
+    let t2s = {};
+    for(let i = 0; i < s.length;i++) {
+        if(!s2t[s[i]] && !t2s[t[i]]) {
+            s2t[s[i]] = t[i];
+            t2s[t[i]] = s[i];
+        } else {
+            if(s2t[s[i]] !== t[i] || t2s[t[i]] !== s[i]) {
+                return false
+            }
+        }
+    }
+    return true
+        
+
+}
+console.log(isIso2("paper", "title"))

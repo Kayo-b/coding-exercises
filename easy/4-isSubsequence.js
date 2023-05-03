@@ -111,4 +111,25 @@ var isSubSeq = (s,t) => {
     return k === s.length
 }
 
-console.log(isSubSeq("abc","azcq"))
+var isSubSeq2 = (s,t) => {
+    /* create two index parameters to keep track of string transposing 
+        compare every letter with another
+        if letters match add to new array
+        return new array === s 
+    */
+   let j = 0;
+   let k = 0;
+
+   while(k < t.length) {
+    if(s[j] === t[k]) {
+        
+        j++
+    }
+    k++
+   }
+
+   return j === s.length
+
+}
+
+    console.log(isSubSeq2("abc","azcq"))
