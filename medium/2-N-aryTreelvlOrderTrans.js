@@ -191,6 +191,24 @@ var lvlOrder7 = (root) => {
     return result
 }
 
+var lvlOrder8 = (root) => {
+    let queue = [root];
+    let result = [];
+    while(queue.length > 0) {
+        let level = [];
+        let size = queue.length;
+        for(let i = 0; i < size;i++) {
+            let node = queue.shift();
+            level.push(node.val);
+            for(let child of node.children) {
+                queue.push(child)
+            }
+        }
+        result.push(level)
+    }
+    return result
+}
+
 // Create an n-ary tree
 let root = new Node(1, []);
 let child1 = new Node(3, []);
