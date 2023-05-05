@@ -49,7 +49,7 @@ var solution = function(isBadVersion) {
         while( left < right ) {
             let mid = Math.floor(left + (right - left) / 2);
             if(isBadVersion) right = mid;
-            else left = mid - 1;
+            else left = mid + 1;
         }
         return left;
     };
@@ -57,6 +57,7 @@ var solution = function(isBadVersion) {
 
 /*
 
+Explanation:
 When the algorithm finds a bad version, it sets the right boundary to the position of that version and
 continues to search for the first bad version within the range defined by the new left and right boundaries. 
 The left boundary is updated by setting it to mid + 1 until it reaches the same position as the right boundary. 
@@ -64,7 +65,7 @@ At this point, the first bad version has been found and the algorithm returns it
 
 ---
 
-The reason for using this expression instead of simply (left + right) / 2 is to avoid integer overflow. 
+*The reason for using this expression instead of simply (left + right) / 2 is to avoid integer overflow. 
 If left and right are very large numbers, their sum could exceed the maximum value that can be represented
 by an integer, causing an overflow. By subtracting left from right before dividing by 2, we ensure that the
 intermediate result is always within the range of an integer, avoiding overflow.
@@ -79,7 +80,7 @@ var solution = function(isBadVersion) {
         while(left < right) {
             let mid = Math.floor(left + (right - left) / 2);
             if(isBadVersion(mid)) right = mid
-            else left = mid - 1
+            else left = mid + 1
         }
     }
 }
@@ -97,3 +98,14 @@ var solution = function(isBadVersion) {
     }
 }
 
+var solution = function(isBadVersion) {
+    return function(n) {
+        let right = n;
+        let left = 1;
+        while(left < right) {
+            let mid = Math.floor(left + (right - left) / 2); //*
+            if(isBadVersion(mid)) right = mid;//that means that the starting bad value can be the current mid or some value before it, so set right boudary at mid.
+            else left = mid + 1;
+        }
+    }
+}

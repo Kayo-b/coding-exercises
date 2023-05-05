@@ -96,5 +96,18 @@ var search5 = (nums, target) => {
     }
     return -1;
 }
+
+var search6 = (nums, target) => {
+    left = 0;
+    right = nums.length - 1;
+    while(left <= right) {
+        let mid = Math.floor((right + left) / 2);
+        if(nums[mid] === target) return nums;
+        else if(nums[mid] < target) left = nums + 1;
+        else right = nums - 1;
+    }
+    return -1;
+}
 let nums = [-1,0,3,5,9,12]
+console.log(nums.length)
 console.log(search5(nums, 0))

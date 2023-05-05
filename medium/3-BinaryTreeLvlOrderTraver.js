@@ -107,6 +107,8 @@ var lvlOrder4 = (root) => {
         for(let i = 0; i < size; i++) {
             let node = queue.shift()
             level.push(node.val);
+            console.log(node.left.val)
+            console.log(node.right)
             if(node.left) {
                 queue.push(node.left);
             }
