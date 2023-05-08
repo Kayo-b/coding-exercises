@@ -138,6 +138,24 @@ var lvlOrder5 = (root) => {
     }
     return result;
 }
+
+var lvlOrder6 = (root) => {
+    let queue = [root];
+    let result = [];
+    while(queue.length > 0) {
+        let level = [];
+        let size = queue.length;
+        for(let i = 0; i < size; i++) {
+            let node = queue.shift();
+            level.push(node.val)
+            if(!node.left || !node.right) break;
+            if(node.left) queue.push(node.left);
+            if(node.right) queue.push(node.right)
+        }
+        result.push(level)
+    }
+    return result;
+}
 function Node(val, left, right) {
     this.val = val;
     this.left = left;
