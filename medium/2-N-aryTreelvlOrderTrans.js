@@ -167,7 +167,6 @@ var lvlOrder6 = (root) => {
 
 }
 
-
 var lvlOrder7 = (root) => {
     //use queue for first in and first out algo
     //each level will be pushed inside its own array (so level array will be created inside the first loop)
@@ -221,8 +220,6 @@ let grandChild1 = new Node(5, []);
 let grandChild2 = new Node(6, []);
 child1.children.push(grandChild1);
 child1.children.push(grandChild2);
-
-
 
 // Test the function
 console.log(root)

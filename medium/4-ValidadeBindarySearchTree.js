@@ -49,10 +49,22 @@ var isValidBST = function(root) {
     function helper(node, upper, lower) {
         if(!node) return true;
         if(upper && node.val >= upper) return false;//compares previous value with current
-        if(downer && node.val <= lower) return false;//compares previous value with current
+        if(lower && node.val <= lower) return false;//compares previous value with current
         if(!helper(node.right, node.val, upper)) return false;
         if(!helper(node.left, lower, node.val)) return false;
         return true;
     }
     return helper(root, null, null)
 };
+
+var isValidBST = (root) => {
+    let helper = (node, upper, downer) => {
+        if(!node) return true;
+        if(upper && node.val >= upper) return false;
+        if(downer && node.val <= downer) return false;
+        if((!helper(node.right, node.val, upper))) return false;
+        if((!helper(node.left, downer, node.val))) return false;
+        return true
+    }
+    return helper(root, null, null)
+}
