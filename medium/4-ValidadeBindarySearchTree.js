@@ -68,3 +68,15 @@ var isValidBST = (root) => {
     }
     return helper(root, null, null)
 }
+
+var isValidBST = (root) => {
+    function helper(node, lower, upper) {
+        if (node === null) return true;
+        if (lower !== null && node.val <= lower) return false;
+        if (upper !== null && node.val >= upper) return false;
+        if (!helper(node.right, node.val, upper)) return false;//checks out if every current right node is higher than the previous node
+        if (!helper(node.left, lower, node.val)) return false;//checks out if every current left node is lower than the previous node 
+        return true;
+    }
+    return helper(root, null, null);
+}
