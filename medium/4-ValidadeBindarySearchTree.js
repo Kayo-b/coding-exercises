@@ -80,3 +80,15 @@ var isValidBST = (root) => {
     }
     return helper(root, null, null);
 }
+
+var isValidBST = (root) => {
+    function helper(node, higher, lower) {
+        if(node === null) return true;
+        if(higher !== null && node.val >= higher) return false;// see if current value is >= than previous(left side check)
+        if(lower !== null && node.val <= lower) return false;// see if current value is >= than previous(right side check)
+        if(!helper(node.right, higher, node.val)) return false;
+        if(!helper(node.left, node.val, lower)) return false;
+        return true;
+    }
+    return helper(root, null, null)
+}

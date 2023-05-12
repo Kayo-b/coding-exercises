@@ -52,3 +52,17 @@ var lowestCommonAncestor = (root, p, q) => {
         return root
     }
 }
+
+var lowestCommonAncestor2 = (root, p, q) => {
+    //the approach is to see if p.val and q.val are bigger or smaller than the root.val
+    //if they are both bigger, recurse through the function but to the right side
+    //if they are smaller, recurse through the left side.
+    //if one of them are smaller/bigger than root, that means they will bifurcate, so root is the common ancestor.
+    if(p.val < root.val && q.val < root.val) {
+        lowestCommonAncestor2(root.left, p, q);
+    } else if(p.val > root.val && q.val > root.val) {
+        lowestCommonAncestor2(root.right, p, q);
+    } else {
+        return root.val
+    }
+}
