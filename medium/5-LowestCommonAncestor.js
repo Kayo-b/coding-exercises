@@ -66,3 +66,13 @@ var lowestCommonAncestor2 = (root, p, q) => {
         return root.val
     }
 }
+
+var lowestCommonAncestor3 = (root, p, q) => {
+    if(p.val < root.val && q.val < root.val) {
+        lowestCommonAncestor3(root.left, p, q)
+    } else if(p > root.val && q > root.val) {
+        lowestCommonAncestor3(root.right, p, q)
+    } else {
+        return root.val
+    }
+}

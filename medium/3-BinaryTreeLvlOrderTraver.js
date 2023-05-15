@@ -156,6 +156,29 @@ var lvlOrder6 = (root) => {
     }
     return result;
 }
+
+var lvlOrder7 = (root) => {
+    let queue = [root];
+    let result = [];
+    while(queue.lenght > 0) {
+        let level = [];
+        let size = queue.length;
+        for(let i = 0; i < size; i++) {
+            let node = queue.shift();
+            level.push(node.val);
+            if(!node.left || !node.right) break;
+            if(node.left) {
+                queue.push(node.left);
+            }
+            if(node.right) {
+                queue.push(node.right)
+            }
+        }
+        result.push(level)
+    }
+    return result;
+}
+
 function Node(val, left, right) {
     this.val = val;
     this.left = left;
@@ -165,8 +188,8 @@ function Node(val, left, right) {
 let root = new Node(1);
 let child1 = new Node(2);
 let child2 = new Node(3);
-root.left = child1
-root.right = child2
+root.left = child1;
+root.right = child2;
 let grandChild1 = new Node(4);
 let grandChild2 = new Node(5);
 child2.left = grandChild1;

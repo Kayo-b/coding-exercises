@@ -129,6 +129,24 @@ var detectCycle2 = (head) => {
     return slow
 }
 
+var detectCycle3 = (head) => {
+    //Use turtle and hare algorithm, if faster pointer crosses slower pointer, that means there is a loop
+    //then reset the slow pointer to start position and iterate both at same speed, the place where they meet it the start of the cycle.
+    let fast = head
+    let slow = head;
+    while(fast && slow) {
+        fast = fast.next.next;
+        slow = slow.next;
+        if(fast === slow) break;
+    }
+    if(slow !== fast) return false;
+    slow = head;
+    while(slow !== fast) {
+        fast = fast.next;
+        slow = slow.next;
+    }
+    return slow;
+}
 
 
 
