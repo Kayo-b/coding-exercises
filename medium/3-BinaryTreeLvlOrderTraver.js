@@ -166,6 +166,11 @@ var lvlOrder7 = (root) => {
         for(let i = 0; i < size; i++) {
             let node = queue.shift();
             level.push(node.val);
+            /* N-ary tree version
+            for(let child of node.children) {
+                queue.push(child);
+            } 
+            */
             if(!node.left || !node.right) break;
             if(node.left) {
                 queue.push(node.left);
