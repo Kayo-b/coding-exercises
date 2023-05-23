@@ -107,3 +107,15 @@ var isValidBST2 = (root) => {
    }                
    return helper(root, null, null);                                                    
 }
+
+var isValidBST3 = (root) => {
+    let helper = (node, higher, lower) => {
+
+        if(higher !== null && node.val >= higher) return false;
+        if(lower !== null && node.val <= lower) return false;
+        if(!helper(node.right, higher, node.val)) return false;
+        if(!helper(node.left, node.val, lower)) return false;
+        return true;
+    }
+    return helper(root, null, null)
+}
