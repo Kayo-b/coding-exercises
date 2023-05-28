@@ -31,5 +31,12 @@ var runningSum2 = function(nums) {
     }
     return nums
 }
+
+var runningSum3 = function(nums) {
+    for(let i = 1; i < nums.length; i++) {
+        nums[i] += nums[i-1]
+    }
+    return nums
+}
 let nums = [1,2,3,4,5]
-console.log(runningSum2(nums))
+console.log(runningSum3(nums))

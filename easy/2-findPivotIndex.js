@@ -87,5 +87,19 @@ var pivotIndex4 = function(nums) {
     }
     return -1
 }
+
+var pivotIndex5 = function(nums) {
+    let total = nums.reduce((accumulator, currentVal) => accumulator + currentVal)
+    let sum = 0;
+    for(let i = 0; i < nums.length; i++) {
+        if(total - (sum + nums[i]) === sum) {
+            
+            return i;
+        } else {
+            sum += nums[i]
+        }
+    }
+    return -1;
+}
 let nums = [1,7,3,6,5,6]
-console.log(pivotIndex4(nums))
+console.log(pivotIndex5(nums))

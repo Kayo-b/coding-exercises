@@ -141,4 +141,22 @@ var isIso2 = (s,t) => {
         
 
 }
-console.log(isIso2("paper", "title"))
+
+var isIso3 = (s,t) => {
+    if(s.length !== t.length) return false
+    let s2t = {};
+    let t2s = {};
+    for(let i = 0;i < s.length; i++) {
+        if(!s2t[s[i]] && !t2s[t[i]]) {
+            s2t[s[i]] = t[i]
+            t2s[t[i]] = s[i]
+        } else {
+            if(s2t[s[i]] !== t[i]) return false
+        }
+
+        //if(s[i] !== t2s[t[i]] || t[i] !== s2t[s[i]]) return false
+
+    }
+    return true
+}
+console.log(isIso3("egg", "add"))

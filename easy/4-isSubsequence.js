@@ -132,4 +132,15 @@ var isSubSeq2 = (s,t) => {
 
 }
 
-    console.log(isSubSeq2("abc","azcq"))
+var isSubSeq3 = (s, t) => {
+    let j = 0;
+    let k = 0;
+    while(s.length > j && t.length > k) {
+        if(s[j] === t[k]) {
+            j++
+        }
+        k++
+    }
+    return j === s.length
+}
+console.log(isSubSeq3("abc","aqaabcq"))
