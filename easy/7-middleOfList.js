@@ -84,6 +84,19 @@ var middleNode3 = function(head) {
     }
     return slow
 }
+
+
+var middleNode4 = function(head) {
+    let fast = head
+    let slow = head;
+    while(fast.next) {
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return slow.val
+}
+
+
 let list1 = { val: 1, next: { val: 2, next: { val: 4, next: {val:6, next: {val: 9, next: null}} } } }
-console.log(middleNode3(list1))
+console.log(middleNode4(list1))
 

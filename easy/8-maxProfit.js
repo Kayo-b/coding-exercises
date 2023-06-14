@@ -92,4 +92,26 @@ var maxProfit3 = (prices) => {
     }
     return profit
 }
-console.log(maxProfit2([7,5,3,6,4,1]))
+
+var maxProfit4 = (prices) => {
+    //find lowest value in array, return the highest value to its right, if no value is higher, return 0
+    let profit = 0;
+    let lowVal = Number.MAX_VALUE;
+    for(let i = 0; i < prices.length; i++) {
+        if(lowVal > prices[i]) lowVal = prices[i];
+        else if(prices[i] - lowVal > profit) profit = prices[i] - lowVal;
+
+    }
+    return profit
+}
+
+var maxProfit5 = (price) => {
+    let lowest = Number.MAX_VALUE;
+    let profit = 0;
+    for(let i = 0; i < price.length; i++) {
+        if(price[i] < lowest) lowest = price[i];
+        else if(profit < price[i] - lowest) profit = price[i] - lowest;
+    }
+    return profit
+}
+console.log(maxProfit5([7,5,3,6,4,1]))

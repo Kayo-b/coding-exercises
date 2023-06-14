@@ -74,4 +74,22 @@ var reverseList4 = (head) => {
     return prev
 }
 
-console.log(reverseList4(list1))
+
+var reverseList5 = (head) => {
+    let prev = null;
+
+    while(head) {
+        let temp = head.next
+        head.next = prev;
+        prev = head
+        head = temp;
+
+    }
+    return prev
+    //take the first value and turn its next to nukll,
+    //then, add it as the next value of its previous next value
+    //do that while next !== null
+    
+}
+
+console.log(reverseList5(list1))

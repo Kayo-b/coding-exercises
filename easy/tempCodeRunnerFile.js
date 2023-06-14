@@ -1,25 +1,15 @@
-var mergeTwoLists7 = (list1, list2) => {
-    let node = new ListNode6();
-    let dummy = node;
-    while(list1 && list2) {
-        if(list1.val < list2.val) {
-            dummy.next = list1;
-            list1 = list1.next;
-        } else {
-            dummy.next = list2;
-            list2 = list2.next;
-        }
-        dummy = dummy.next
-    }
-    if(list1) {
-        dummy.next = list1;
-    }
-    if(list2) {
-        dummy.next = list2;
-    }
-    return node.next
 
+
+var middleNode4 = function(head) {
+    let fast = head
+    let slow = head;
+    while(fast) {
+        fast = fast.next.next;
+        slow = fast.next;
+    }
+    return slow
 }
 
 
-console.log(mergeTwoLists7(list1, list2))
+let list1 = { val: 1, next: { val: 2, next: { val: 4, next: {val:6, next: {val: 9, next: null}} } } }
+console.log(middleNode4(list1))

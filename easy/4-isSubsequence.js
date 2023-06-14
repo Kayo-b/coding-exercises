@@ -143,4 +143,19 @@ var isSubSeq3 = (s, t) => {
     }
     return j === s.length
 }
-console.log(isSubSeq3("abc","aqaabcq"))
+
+var isSubSeq4 = (s, t) => {
+    //compare each letter in each index to the same index of t
+    //map the relations and if they dont hold true, return false, else, if they hold true, return true'
+    let j = 0;
+    let k = 0;
+    while(k < t.length && j < s.length) {
+        if(s[j] === t[k]) {
+            j++;
+        } 
+        k++
+    }
+    return j === s.length
+    
+}
+console.log(isSubSeq4("abc","aqaabcq"))
