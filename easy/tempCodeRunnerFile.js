@@ -1,15 +1,12 @@
-
-
-var middleNode4 = function(head) {
-    let fast = head
-    let slow = head;
-    while(fast) {
-        fast = fast.next.next;
-        slow = fast.next;
+var longestPalindrome4 = (s) => {
+    let map = {};
+    for(let letter of s) {
+        if(!map.letter) {
+            map.letter = 1
+        } else if(map.letter) {
+            map.letter += 1;
+        }
     }
-    return slow
+    console.log(map)
 }
-
-
-let list1 = { val: 1, next: { val: 2, next: { val: 4, next: {val:6, next: {val: 9, next: null}} } } }
-console.log(middleNode4(list1))
+console.log(longestPalindrome3("abbbbddcc"))

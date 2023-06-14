@@ -104,4 +104,23 @@ var longestPalindrome3 = (s) => {
     if(isOdd) count++
     return count;
 }
-console.log(longestPalindrome3("abbbbddcc"))
+
+var longestPalindrome4 = (s) => {
+    let map = {};
+    let total = 0;
+    let hasOdd = false;
+    for(let i = 0; i < s.length;i++) {
+        if(!map[s[i]]) {
+            map[s[i]] = 1
+        } else if(map[s[i]]) {
+            map[s[i]] += 1;
+        }
+    }
+    for(let val in map) {
+        if(map[val] % 2 === 0)  total += map[val];
+        else if(map[val] % 2 === 1) hasOdd = true;
+    }
+    if(hasOdd === true) total++
+    return total
+}
+console.log(longestPalindrome4("abbbbddcc"))
