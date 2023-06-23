@@ -64,7 +64,7 @@ var preorder4 = (root) => {
 var preorder5 = (root) => {
     let result = [];
     let helper = (node) => {
-        if(!node) return;
+        if(!node.children) return;
         result.push(node.val)
         for(let nodes of node.children) {
             
@@ -74,6 +74,19 @@ var preorder5 = (root) => {
     }
     return helper(root)
     
+}
+
+var preorder6 = (root) => {
+    let result = [];
+    let helper = (node) => {
+        if(!node.children) return;
+        result.push(node.val)
+        for(let child of node.children) {
+            helper(child)
+        }
+        return result
+    }
+    return helper(root)
 }
 // Create an n-ary tree
 let root = new Node(1, []);
@@ -88,4 +101,4 @@ let grandChild2 = new Node(6, []);
 child1.children.push(grandChild1);
 child1.children.push(grandChild2);
 
-console.log(preorder5(root))
+console.log(preorder6(root))

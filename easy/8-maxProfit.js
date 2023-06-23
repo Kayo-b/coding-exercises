@@ -114,4 +114,17 @@ var maxProfit5 = (price) => {
     }
     return profit
 }
-console.log(maxProfit5([7,5,3,6,4,1]))
+
+var maxProfit6 = (price) => {
+    let profit = 0;
+    let lowest = Number.MAX_VALUE
+    for(let i = 0; i < price.length;i++) {
+        if(price[i]< lowest) lowest = price[i];
+        if(profit < price[i+1] - lowest) {
+            profit = price[i + 1] - lowest
+        }
+    }
+    return profit;
+}
+console.log(maxProfit5([7,5,3,6,7,1]))
+
